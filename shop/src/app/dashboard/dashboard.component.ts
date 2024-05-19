@@ -9,9 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-dashboard-component',
-  templateUrl: './dashboard-component.component.html',
-  styleUrl: './dashboard-component.component.css',
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css',
   standalone: true,
   imports: [
     AsyncPipe,
@@ -22,7 +22,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ]
 })
-export class DashboardComponentComponent {
+export class DashboardComponent {
   private breakpointObserver = inject(BreakpointObserver);
 
   /** Based on the screen size, switch from standard to one column per row */
