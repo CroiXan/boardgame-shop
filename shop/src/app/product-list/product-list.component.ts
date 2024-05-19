@@ -13,6 +13,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { Producto } from '../models/producto.model';
 import { PageEvent } from '@angular/material/paginator';
+import { ActivatedRoute } from '@angular/router';
+import { ProductoService } from '../services/producto.service';
 
 @Component({
   selector: 'app-product-list',
@@ -34,18 +36,12 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class ProductListComponent {
 
-  productos : Producto[] = [
-    {
-      nombre: 'Producto 1',
-      precio: 100,
-      imagen: 'ruta/imagen1.jpg',
-      descripcion: 'Descripción del producto 1'
-    },
-  ];
+  productos : Producto[] = [];
+  categoriaId: number = 0;
 
   totalProductos = this.productos.length;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(private route: ActivatedRoute, private productoService: ProductoService, public dialog: MatDialog) {}
 
   openDialog(producto: Producto): void {
     const dialogRef = this.dialog.open(ProductDetailsComponent, {
@@ -59,6 +55,19 @@ export class ProductListComponent {
   }
 
   cambiarPagina(event: PageEvent) {
+  }
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id !== null) {
+        this.categoriaId = +id;
+        this.productos = this.productoService.getProductosPorCategoria(this.categoriaId);
+      }else{
+        this.productos = this.productoService.getProductos();
+      }
+      this.totalProductos = this.productos.length;
+    });
   }
 
 }
