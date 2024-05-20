@@ -1,11 +1,11 @@
 <div class="container">
     <mat-grid-list cols="3" rowHeight="350px">
       <mat-grid-tile *ngFor="let categoria of categorias">
-        <mat-card [routerLink]="['/categoria', categoria.id]">
+        <mat-card [routerLink]="['/categoria', categoria.id]" class="min-height-320">
           <mat-card-header>
             <mat-card-title>{{ categoria.nombre }}</mat-card-title>
           </mat-card-header>
-          <img mat-card-image [src]="categoria.imagen" alt="{{ categoria.nombre }}">
+          <img mat-card-image class="max-300" [src]="categoria.imagen" alt="{{ categoria.nombre }}">
           <mat-card-content>
             <p>{{ categoria.descripcion }}</p>
           </mat-card-content>

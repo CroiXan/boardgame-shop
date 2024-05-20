@@ -1,15 +1,23 @@
 <div class="container">
     <mat-grid-list cols="3" rowHeight="350px">
       <mat-grid-tile *ngFor="let producto of productos">
-        <mat-card>
+        <mat-card class="product-card">
           <mat-card-header>
             <mat-card-title>{{ producto.nombre }}</mat-card-title>
             <mat-card-subtitle>{{ producto.precio | currency }}</mat-card-subtitle>
           </mat-card-header>
-          <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}">
-          <mat-card-content>
-            <p>{{ producto.descripcion }}</p>
-          </mat-card-content>
+
+          <div class="product-card-content">
+            <div class="product-image-container">
+              <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}" class="product-image">
+            </div>
+            <div class="product-details-container"> 
+              <mat-card-content>
+                <p>{{ producto.descripcion }}</p>
+              </mat-card-content>
+            </div>
+          </div>
+
           <mat-card-actions>
             <button mat-button>Añadir al carrito</button>
             <button mat-button (click)="openDialog(producto)">Detalles</button>
@@ -17,6 +25,6 @@
         </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
-    <mat-paginator [length]="totalProductos" [pageSize]="10" (page)="cambiarPagina($event)">
-    </mat-paginator>
+    <!--<mat-paginator [length]="totalProductos" [pageSize]="10" (page)="cambiarPagina($event)">
+    </mat-paginator>-->
 </div>
