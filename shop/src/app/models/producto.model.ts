@@ -4,4 +4,6 @@ export interface Producto {
     imagen: string;
     descripcion: string;
     categoriaId: number;
+    descuentoActivo: boolean;
+    porcentajeDescuento: number;
 }

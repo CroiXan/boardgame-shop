@@ -6,9 +6,8 @@ import { Producto } from '../models/producto.model';
 })
 export class ProductoService {
   private productos: Producto[] = [
-    { nombre: 'Producto 1', precio: 100, imagen: 'ruta/imagen1.jpg', descripcion: 'Descripción del producto 1', categoriaId: 1 },
-    { nombre: 'Producto 2', precio: 200, imagen: 'ruta/imagen2.jpg', descripcion: 'Descripción del producto 2', categoriaId: 2 },
-    // más productos...
+    { nombre: 'Producto 1', precio: 100, imagen: 'ruta/imagen1.jpg', descripcion: 'Descripción del producto 1', categoriaId: 1, descuentoActivo: true, porcentajeDescuento: 20 },
+    { nombre: 'Producto 2', precio: 200, imagen: 'ruta/imagen2.jpg', descripcion: 'Descripción del producto 2', categoriaId: 2, descuentoActivo: false, porcentajeDescuento: 0 },
   ];
 
   getProductos(): Producto[] {

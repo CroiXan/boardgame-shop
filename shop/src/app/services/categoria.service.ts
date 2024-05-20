@@ -6,8 +6,8 @@ import { Categoria } from '../models/categoria.model';
 })
 export class CategoriaService {
   private categorias: Categoria[] = [
-    { id: 1, nombre: 'Categoría 1' },
-    { id: 2, nombre: 'Categoría 2' }
+    { id: 1, nombre: 'Categoría 1', descripcion: '', imagen: '' },
+    { id: 2, nombre: 'Categoría 2', descripcion: '', imagen: '' }
   ];
 
   getCategorias(): Categoria[] {
