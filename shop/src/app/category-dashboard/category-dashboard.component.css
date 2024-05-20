@@ -1,0 +1,8 @@
+.max-300{
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.min-height-320{
+    min-height: 320px;
+}
