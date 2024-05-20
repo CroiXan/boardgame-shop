@@ -1,12 +1,22 @@
 <div class="container">
-    <mat-grid-list cols="3" rowHeight="350px">
+    <mat-grid-list cols="2" rowHeight="500px">
       <mat-grid-tile *ngFor="let producto of productos">
         <mat-card class="product-card">
           <mat-card-header>
             <mat-card-title>{{ producto.nombre }}</mat-card-title>
-            <mat-card-subtitle>{{ producto.precio | currency }}</mat-card-subtitle>
+            <mat-card-subtitle>
+              <span *ngIf="producto.descuentoActivo; else normalPrice">
+                <div class="original-price">{{ producto.precio | currency }}</div>
+                <div>{{ calcularPrecioConDescuento(producto) | currency }}</div>
+              </span>
+              <ng-template #normalPrice>
+                <span>{{ producto.precio | currency }}</span>
+              </ng-template>
+            </mat-card-subtitle>
           </mat-card-header>
-
+          <div>
+            <p *ngIf="producto.descuentoActivo">¡En oferta!</p>
+          </div>
           <div class="product-card-content">
             <div class="product-image-container">
               <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}" class="product-image">

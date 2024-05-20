@@ -3,7 +3,7 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar [routerLink]="['/']">Menu</mat-toolbar>
+    <mat-toolbar [routerLink]="['/']">El Gremio del Dado</mat-toolbar>
     <app-category-list></app-category-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -17,7 +17,7 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
-      <span>shop</span>
+      <span [routerLink]="['/']">El Gremio del Dado</span>
       <span class="spacer"></span>
       <mat-icon>search</mat-icon>
       <mat-icon>shopping_cart</mat-icon>

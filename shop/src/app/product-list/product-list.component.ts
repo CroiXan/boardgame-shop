@@ -57,6 +57,12 @@ export class ProductListComponent {
   cambiarPagina(event: PageEvent) {
   }
 
+  calcularPrecioConDescuento(producto: Producto): string {
+    const descuento = producto.descuentoActivo ? ((100-producto.porcentajeDescuento)/100) : 1; 
+    const precioConDescuento = producto.precio * descuento;
+    return precioConDescuento.toFixed(2);
+  }
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
