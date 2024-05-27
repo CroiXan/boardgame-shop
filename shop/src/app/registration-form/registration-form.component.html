@@ -1,0 +1,107 @@
+<div class="container-md">
+    <h4 class="mb-3">Registro</h4>
+    <form class="needs-validation" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+        <div class="col-sm-6">
+          <label for="firstName" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="firstName" placeholder="" value="" formControlName="firstName">
+          <div *ngIf="registrationForm.get('firstName')?.invalid && registrationForm.get('firstName')?.touched" class="invalid-feedback">
+            <div *ngIf="registrationForm.get('firstName')?.errors?.['required']">Nombre es obligatorio.</div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="lastName" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="lastName" placeholder="" value="" formControlName="lastName">
+          <div *ngIf="registrationForm.get('lastName')?.invalid && registrationForm.get('lastName')?.touched" class="invalid-feedback">
+            <div *ngIf="registrationForm.get('lastName')?.errors?.['required']">Apellido es obligatorio.</div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label for="username" class="form-label">Nombre de Usuario</label>
+          <div class="input-group has-validation">
+            <input type="text" class="form-control" id="username" placeholder="Nombre de Usuario" formControlName="username">
+          <div *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched" class="invalid-feedback">
+            <div *ngIf="registrationForm.get('username')?.errors?.['required']">Nombre de Usuario es obligatorio.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com" formControlName="email">
+          <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="invalid-feedback">
+            <div *ngIf="registrationForm.get('email')?.errors?.['required']">Email es obligatorio.</div>
+            <div *ngIf="registrationForm.get('email')?.errors?.['email']">formato de email no valido</div>
+          </div>
+        </div>
+
+        <div class="col-12">
+            <label for="password" class="form-label">Contraseña</label>
+            <div class="input-group has-validation">
+              <input type="password" class="form-control" id="password" formControlName="password" (input)="passwordFormatValidatior()">
+            <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="invalid-feedback">
+              <div *ngIf="registrationForm.get('password')?.errors?.['required']">Contraseña es obligatorio.</div>
+              <div *ngIf="registrationForm.get('password')?.errors?.['minLength']">Largo minimo es 6.</div>
+              <div *ngIf="!isFormatPasswordValid">Las contraseña a lo menos debete tener una mayuscula y una minuscula.</div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+            <div class="input-group has-validation">
+              <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" (input)="passwordMatchValidator()">
+            <div *ngIf="(registrationForm.get('confirmPassword')?.invalid && registrationForm.get('confirmPassword')?.touched) || !isMatchPassword"class="invalid-feedback">
+                <div *ngIf="registrationForm.get('confirmPassword')?.errors?.['required']">Confirmar contraseña es obligatorio.</div>
+                <div *ngIf="!isMatchPassword">Las contraseñas no coinciden.</div>
+                <div *ngIf="!isFormatConfirmPasswordValid">Las contraseña a lo menos debete tener una mayuscula y una minuscula.</div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+          <label for="address" class="form-label">Direccion</label>
+          <input type="text" class="form-control" id="address" placeholder="" formControlName="address">
+          <div class="invalid-feedback">
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <label for="region" class="form-label">Region</label>
+          <select class="form-select" id="region" formControlName="region">
+            <option value="">Elegir Region...</option>
+          </select>
+          <div class="invalid-feedback">
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <label for="comuna" class="form-label">Comuna</label>
+          <select class="form-select" id="comuna" formControlName="comuna">
+            <option value="">Elegir Comuna...</option>
+          </select>
+          <div class="invalid-feedback">
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <label for="postalCode" class="form-label">Codigo Postal</label>
+          <input type="text" class="form-control" id="postalCode" placeholder="" formControlName="postalCode">
+          <div class="invalid-feedback">
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid">Registrarse</button>
+        </div>
+
+        <div class="col-md-6">
+          <button class="btn btn-primary" (click)="cleanForm()">Limpiar Formulario</button>
+        </div>
+
+      </div>
+      
+    </form>
+</div>
