@@ -2,3 +2,18 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn-primary {
+    background-color: #7b1fa2;
+    border-color: #671b87;
+    --bs-btn-disabled-bg: #4d1565;
+    --bs-btn-disabled-border-color: #250832;
+}
+
+.invalid-feedback {
+  display: block;
+  width: 100%;
+  margin-top: .25rem;
+  font-size: .875em;
+  color: var(--bs-form-invalid-color);
+}

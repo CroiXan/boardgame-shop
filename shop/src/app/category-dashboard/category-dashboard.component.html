@@ -1,15 +1,15 @@
-<div class="container">
-    <mat-grid-list cols="3" rowHeight="350px">
-      <mat-grid-tile *ngFor="let categoria of categorias">
-        <mat-card [routerLink]="['/categoria', categoria.id]" class="min-height-320">
-          <mat-card-header>
-            <mat-card-title>{{ categoria.nombre }}</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image class="max-300" [src]="categoria.imagen" alt="{{ categoria.nombre }}">
-          <mat-card-content>
-            <p>{{ categoria.descripcion }}</p>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
+<div class="container-md">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col" *ngFor="let categoria of categorias">
+        <div class="card shadow-sm" [routerLink]="['/categoria', categoria.id]">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="225" [src]="categoria.imagen" alt="{{ categoria.nombre }}"/>
+          <div class="card-body">
+            <p class="card-text">{{ categoria.nombre }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <p class="card-text">{{ categoria.descripcion }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>

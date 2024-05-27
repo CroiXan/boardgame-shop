@@ -1,10 +1,14 @@
-<div class="container">
-    <mat-grid-list cols="2" rowHeight="500px">
-      <mat-grid-tile *ngFor="let producto of productos">
-        <mat-card class="product-card">
-          <mat-card-header>
-            <mat-card-title>{{ producto.nombre }}</mat-card-title>
-            <mat-card-subtitle>
+<div class="container-md">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    <div class="col" *ngFor="let producto of productos">
+      <div class="card mb-3" style="max-width: 600px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img class="bd-placeholder-img img-fluid rounded-start" [src]="producto.imagen" alt="{{ producto.nombre }}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ producto.nombre }}</h5>
               <span *ngIf="producto.descuentoActivo; else normalPrice">
                 <div class="original-price">{{ producto.precio | currency }}</div>
                 <div>{{ calcularPrecioConDescuento(producto) | currency }}</div>
@@ -12,29 +16,20 @@
               <ng-template #normalPrice>
                 <span>{{ producto.precio | currency }}</span>
               </ng-template>
-            </mat-card-subtitle>
-          </mat-card-header>
-          <div>
-            <p *ngIf="producto.descuentoActivo">¡En oferta!</p>
-          </div>
-          <div class="product-card-content">
-            <div class="product-image-container">
-              <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}" class="product-image">
-            </div>
-            <div class="product-details-container"> 
-              <mat-card-content>
-                <p>{{ producto.descripcion }}</p>
-              </mat-card-content>
+              <div>
+                <p *ngIf="producto.descuentoActivo">¡En oferta!</p>
+              </div>
+              <!--<p class="card-text">{{ producto.descripcion }}</p>-->
             </div>
           </div>
-
-          <mat-card-actions>
-            <button mat-button>Añadir al carrito</button>
-            <button mat-button (click)="openDialog(producto)">Detalles</button>
-          </mat-card-actions>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-primary">Añadir al carrito</button>
+          <button type="button" class="btn btn-secondary" (click)="openDialog(producto)">Detalles</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <!--<mat-paginator [length]="totalProductos" [pageSize]="10" (page)="cambiarPagina($event)">
     </mat-paginator>-->
 </div>
