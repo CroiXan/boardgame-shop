@@ -28,12 +28,25 @@
           </div>
         </div>
 
-        <div class="col-12">
-          <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email <span class="text-body-secondary"></span></label>
           <input type="email" class="form-control" id="email" placeholder="you@example.com" formControlName="email">
           <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="invalid-feedback">
             <div *ngIf="registrationForm.get('email')?.errors?.['required']">Email es obligatorio.</div>
             <div *ngIf="registrationForm.get('email')?.errors?.['email']">formato de email no valido</div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <label for="selectedDate" class="form-label">Fecha de nacimiento <span class="text-body-secondary"></span></label>
+          <div>
+          <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" formControlName="selectedDate" (dateChange)="validateAge()">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker ></mat-datepicker>
+          </div>
+          <div *ngIf="(registrationForm.get('selectedDate')?.invalid && registrationForm.get('selectedDate')?.touched) || !isValidDate" class="invalid-feedback">
+            <div *ngIf="registrationForm.get('selectedDate')?.errors?.['required']">Email es obligatorio.</div>
+            <div *ngIf="!isValidDate">Debes tener a lo menos 13 años</div>
           </div>
         </div>
 

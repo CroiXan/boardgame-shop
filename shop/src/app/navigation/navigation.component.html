@@ -4,6 +4,9 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar [routerLink]="['/']">El Gremio del Dado</mat-toolbar>
+    <a mat-list-item [routerLink]="['/registro']">
+      Registro
+    </a>
     <app-category-list></app-category-list>
   </mat-sidenav>
   <mat-sidenav-content>
